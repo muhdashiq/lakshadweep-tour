@@ -7,7 +7,7 @@ export const Faqs = ({ faqs }: { faqs: Faq[] }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <Section id="faq" eyebrow="Good to know" title="Questions, answered" tone="tinted">
+    <Section id="faq" title="Questions, answered" tone="tinted">
       <div className="faq">
         {faqs.map((faq, index) => {
           const isOpen = openIndex === index;

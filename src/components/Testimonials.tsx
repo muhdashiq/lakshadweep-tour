@@ -1,19 +1,18 @@
-import type { Testimonial } from "../data/types";
-import { Reveal } from "./Reveal";
+import type { SiteConfig, Testimonial } from "../data/types";
 import { Section } from "./Section";
+import { Stats } from "./Stats";
 
-export const Testimonials = ({ items }: { items: Testimonial[] }) => (
-  <Section id="reviews" eyebrow="Reviews" title="Travellers talk about the trip">
-    <div className="grid grid--3">
-      {items.map((item, index) => (
-        <Reveal key={item.name} delay={index * 0.1}>
-          <figure className="quote">
-            <blockquote>“{item.quote}”</blockquote>
-            <figcaption>
-              <strong>{item.name}</strong> · {item.from}
-            </figcaption>
-          </figure>
-        </Reveal>
+type TestimonialsProps = { items: Testimonial[]; stats: SiteConfig["stats"] };
+
+export const Testimonials = ({ items, stats }: TestimonialsProps) => (
+  <Section id="reviews" title="What travellers tell us">
+    <Stats stats={stats} />
+    <div className="reviews">
+      {items.map((item) => (
+        <figure key={item.name} className="review">
+          <blockquote>{item.quote}</blockquote>
+          <figcaption>{item.name}, {item.from}</figcaption>
+        </figure>
       ))}
     </div>
   </Section>

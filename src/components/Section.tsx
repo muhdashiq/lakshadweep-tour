@@ -1,21 +1,20 @@
 import type { ReactNode } from "react";
-import { Reveal } from "./Reveal";
 
 type SectionProps = {
   id: string;
-  eyebrow: string;
   title: string;
+  intro?: string;
   children: ReactNode;
   tone?: "light" | "tinted";
 };
 
-export const Section = ({ id, eyebrow, title, children, tone = "light" }: SectionProps) => (
+export const Section = ({ id, title, intro, children, tone = "light" }: SectionProps) => (
   <section id={id} className={`section section--${tone}`}>
     <div className="container">
-      <Reveal className="section__head">
-        <span className="eyebrow">{eyebrow}</span>
+      <div className="section__head">
         <h2>{title}</h2>
-      </Reveal>
+        {intro && <p>{intro}</p>}
+      </div>
       {children}
     </div>
   </section>
